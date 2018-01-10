@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+
+<head>
+
+    <title>VIS Viewer</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" type="text/css" href="lib/appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="lib/appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" id="csstheme" href="vis-viewer-green.css" />
+
+    
+    <script type="text/javascript" charset="utf-8" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/fastclick.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/appframework/appframework.ui.min.js"></script>
+        
+    <script src='cordova.js'></script>
+        
+    <script type="text/javascript" charset="utf-8" src="vis-viewer.js"></script>
+    
+
+    <script type="text/javascript" charset="utf-8" src="/plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js"></script>
+
+</head>
+
+<body onload="starten();">
+
+    <div id="splashscreen" class='ui-loader heavy'>
+        VIS Viewer        <br>
+        <br>
+        <span class='ui-icon ui-icon-loading spin'></span>
+        <h1>Startet</h1>
+    </div>
+
+    <div class="view" id="mainview">
+        <header>
+            <h1 style="color:white;">VIS Viewer</h1>
+            <a href="#backpage" data-transition="flip" class="button icon settings" style="float:right;color:white;"></a>
+        </header>
+
+        <div class="pages">
+            <!-- main panel -->
+            <div class="panel backgroundcolor" title="VIS Viewer" id="mainpage" data-footer="none" selected="true">
+                <div id="mainpage1"></div>
+                <div id="mainpage2"></div>
+                <div id="mainpage3"></div>
+
+            </div>
+        </div>
+    </div>    
+
+    <div class="view" id="backview" >
+    
+        <header style="background:#00b600;">
+            <h1 style="color:white;">VIS Viewer</h1>
+            <a href="#mainpage" data-transition="flip" class="button icon close" style="float:right;color:white;"></a>
+        </header>
+
+        <div class="pages">
+    
+            <!-- back panel -->
+            <div class="panel backgroundcolor" title="VIS Viewer" id="backpage" data-footer="none">
+                <br>
+                <div class="menukasten" style="border-radius: 8px;"><br>                 
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h11);</script></b></center><br></font>
+                <b><script>document.write(h16);</script></b><br>
+                <script>document.write(h17);</script>
+                <br>
+                ZZZZZ XXXX<br>
+                YYYYY<br>
+                ZZZZZ<br>
+                <script>document.write(h18);</script>: apps@XXXXX.de<br><br>
+                <b><script>document.write(h19);</script>:</b><br>
+               <script>document.write(h110);</script>
+                <br><br>
+                </div>                  
+                
+                 <br>
+                <div class="menukasten" style="border-radius: 8px;"><br>
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h117);</script></b></center><br></font>
+                <ul class="list inset listkasten" id="settingsListl">
+                    <li>
+                        <label><script>document.write(h118);</script></label>
+                        <select id="language"  onchange="savedata('language');">
+                            <option id="langen" value="en">English</option>
+                            <option id="langde" value="de">Deutsch</option>
+                            <option id="langru" value="ru">Russian</option>     
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                <br>
+                </div>  
+                
+                
+                <br>
+                <div class="menukasten" style="background-color:#f9f9f9;border-radius: 8px;"><br>
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h39);</script></b></center><br></font>
+                <ul class="list inset listkasten" id="settingsListl">
+                    <li>
+                        <label><script>document.write(h40);</script></label>
+                        <select id="theme" onchange="savedata('theme');">
+                            <option id="themeblue" value="blue">Cool Blue</option>
+                            <option id="themegreen" value="green">Toxic Green</option>
+                            <option id="themegrey" value="grey">Boring Grey</option>
+                            <option id="themepink" value="pink">Pink Drugs</option>
+                            <option id="themeblack" value="black">Black Night</option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                <br>
+                </div>  
+                
+                <br>
+                <div class="menukasten" style="background-color:#f9f9f9;border-radius: 8px;"><br>
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h130);</script></b></center><br></font>
+                <script>document.write(h131);</script><br>
+                <ul class="list inset listkasten" id="settingsListl">
+                    <li>
+                        <label><script>document.write(h132);</script></label>
+                        <select id="quickstart" onchange="savedata('quickstart');">
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                <br>
+                </div>  
+                
+                             
+                <br>
+                <div class="menukasten" style="background-color:#f9f9f9;border-radius: 8px;"><br>
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h12);</script></b></center><br></font>
+                <b><script>document.write(h111);</script></b><br>
+                 <b><script>document.write(h112);</script></b>: http://192.168.0.5:8082/vis/<br>
+                <b><script>document.write(h113);</script></b><br>
+
+                <ul class="list inset listkasten" id="settingsList1">
+                    <li>
+                        <label>URL</label>
+                        <input  type="text" id="urli" value="http://MEIN-IOBROKER:8082/vis/" onchange="savedata('urli');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>WLAN-SSID</label>
+                        <input  type="text" id="ssid" value="Mein WLAN" onchange="savedata('ssid');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                <br>
+                </div>  
+
+                <br>
+                <div class="menukasten" style="background-color:#f9f9f9;border-radius: 8px;"><br>
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h13);</script></b></center><br></font>
+                <b><script>document.write(h114);</script></b><br>
+                <b><script>document.write(h112);</script></b> https://ihredyndns-name/vis/<br></p>
+                <ul class="list inset listkasten" id="settingsList2">
+                    <li>
+                        <label>URL</label>
+                        <input  type="text" id="urle" value="https://ICH-EXTERN/vis/" onchange="savedata('urle');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                 <br>
+                </div>
+            
+                <br>
+                <div ><br>
+                    
+                <font color="#00b600" size="+1"><div class="viewbuttonon" id="viewbutton1"><br><a onclick="displayviewcontainer(1);"><center><b><div id="viewnamecontainer1"><script>document.write(h14);</script> 1</div></b></center><br></font></div></a>
+                <div class="containerviewon" id="containerview1">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList3">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name1" value="Demo 1" onchange="savedata('name1');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link1" value="#DemoView" onchange="savedata('link1');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation1" value="p" onchange="savedata('orientation1');">
+                            <option id="orientation1a" value="a">Auto</option>
+                            <option id="orientation1p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation1l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom1" value="On" onchange="savedata('doubletapzoom1');">
+                            <option id="doubletapzoom1on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom1off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar1" value="On" onchange="savedata('toolbar1');">
+                            <option id="toolbar1bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar1top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar1off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom1" min="10" max="300" value="100" onchange="savedata('zoom1');"><br>
+                         <output id="zoom1o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul><br>
+                 <br></div><br>
+
+                <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton2"><br><a onclick="displayviewcontainer(2);"><center><b><div id="viewnamecontainer2"><script>document.write(h14);</script> 2</b></div></center><br></font></div></a>
+                <div class="containerview" id="containerview2" >
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList4">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name2" value="" onchange="savedata('name2');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link2" value="" onchange="savedata('link2');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation2" value="p" onchange="savedata('orientation2');">
+                            <option id="orientation2a" value="a">Auto</option>
+                            <option id="orientation2p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation2l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom2" value="On" onchange="savedata('doubletapzoom2');">
+                            <option id="doubletapzoom2on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom2off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar2" value="On" onchange="savedata('toolbar2');">
+                            <option id="toolbar2bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar2top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar2off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom2" min="10" max="300" value="100" onchange="savedata('zoom2');"><br>
+                         <output id="zoom2o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                 <br></div><br>
+    
+                <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton3"><br><a onclick="displayviewcontainer(3);"><center><b><div id="viewnamecontainer3"><script>document.write(h14);</script> 3</b></div></center><br></font></div></a>
+                <div class="containerview" id="containerview3">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList4">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name3" value="" onchange="savedata('name3');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link3" value="" onchange="savedata('link3');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation3" value="p" onchange="savedata('orientation3');">
+                            <option id="orientation3a" value="a">Auto</option>
+                            <option id="orientation3p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation3l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom3" value="On" onchange="savedata('doubletapzoom3');">
+                            <option id="doubletapzoom3on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom3off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>    
+                    
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar3" value="On" onchange="savedata('toolbar3');">
+                            <option id="toolbar3bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar3top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar3off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom3" min="10" max="300" value="100" onchange="savedata('zoom3');"><br>
+                         <output id="zoom3o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                 <br></div><br>
+    
+                <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton4"><br><a onclick="displayviewcontainer(4);"><center><b><div id="viewnamecontainer4"><script>document.write(h14);</script> 4</b></div></center><br></font></div></a>
+                <div class="containerview" id="containerview4">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList4">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name4" value="" onchange="savedata('name4');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link4" value="" onchange="savedata('link4');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation4" value="p" onchange="savedata('orientation4');">
+                            <option id="orientation4a" value="a">Auto</option>
+                            <option id="orientation4p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation4l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom4" value="On" onchange="savedata('doubletapzoom4');">
+                            <option id="doubletapzoom4on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom4off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>    
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar4" value="On" onchange="savedata('toolbar4');">
+                            <option id="toolbar4bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar4top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar4off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom4" min="10" max="300" value="100" onchange="savedata('zoom4');"><br>
+                         <output id="zoom4o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+                 <br></div><br>
+    
+                <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton5"><br><a onclick="displayviewcontainer(5);"><center><b><div id="viewnamecontainer5"><script>document.write(h14);</script> 5</b></div></center><br></font></div></a>
+                <div class="containerview" id="containerview5">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList5">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name5" value="" onchange="savedata('name5');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link5" value="" onchange="savedata('link5');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation5" value="p" onchange="savedata('orientation5');">
+                            <option id="orientation5a" value="a">Auto</option>
+                            <option id="orientation5p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation5l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom5" value="On" onchange="savedata('doubletapzoom5');">
+                            <option id="doubletapzoom5on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom5off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+                    
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar5" value="On" onchange="savedata('toolbar5');">
+                            <option id="toolbar5bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar5top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar5off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom5" min="10" max="300" value="100" onchange="savedata('zoom5');"><br>
+                         <output id="zoom5o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                 <br></div><br>
+
+                             <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton6"><br><a onclick="displayviewcontainer(6);"><center><b><div id="viewnamecontainer6"><script>document.write(h14);</script> 6</div></b></center><br></font></div></a>
+                <div class="containerview" id="containerview6">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList6">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name6" value="" onchange="savedata('name6');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link6" value="" onchange="savedata('link6');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation6" value="p" onchange="savedata('orientation6');">
+                            <option id="orientation6a" value="a">Auto</option>
+                            <option id="orientation6p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation6l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom6" value="On" onchange="savedata('doubletapzoom6');">
+                            <option id="doubletapzoom6on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom6off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar6" value="On" onchange="savedata('toolbar6');">
+                            <option id="toolbar6bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar6top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar6off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom6" min="10" max="300" value="100" onchange="savedata('zoom6');"><br>
+                         <output id="zoom6o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                 <br></div><br>
+				
+				<font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton7"><br><a onclick="displayviewcontainer(7);"><center><b><div id="viewnamecontainer7"><script>document.write(h14);</script> 7</div></b></center><br></font></div></a>
+                <div class="containerview" id="containerview7">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList7">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name7" value="" onchange="savedata('name7');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link7" value="" onchange="savedata('link7');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar7" value="On" onchange="savedata('toolbar7');">
+                            <option id="toolbar7bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar7top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar7off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation7" value="p" onchange="savedata('orientation7');">
+                            <option id="orientation7a" value="a">Auto</option>
+                            <option id="orientation7p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation7l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom7" value="On" onchange="savedata('doubletapzoom7');">
+                            <option id="doubletapzoom7on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom7off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+                    
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom7" min="10" max="300" value="100" onchange="savedata('zoom7');"><br>
+                         <output id="zoom7o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                 <br></div><br>
+                 <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton8"><br><a onclick="displayviewcontainer(8);"><center><b><div id="viewnamecontainer8"><script>document.write(h14);</script> 8</div></b></center><br></font></div></a>
+                <div class="containerview" id="containerview8">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList8">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name8" value="" onchange="savedata('name8');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link8" value="" onchange="savedata('link8');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation8" value="p" onchange="savedata('orientation8');">
+                            <option id="orientation8a" value="a">Auto</option>
+                            <option id="orientation8p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation8l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom8" value="On" onchange="savedata('doubletapzoom8');">
+                            <option id="doubletapzoom8on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom8off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar8" value="On" onchange="savedata('toolbar8');">
+                            <option id="toolbar8bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar8top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar8off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom8" min="10" max="300" value="100" onchange="savedata('zoom8');"><br>
+                         <output id="zoom8o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                 <br></div><br>
+                 <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton9"><br><a onclick="displayviewcontainer(9);"><center><b><div id="viewnamecontainer9"><script>document.write(h14);</script> 9</div></b></center><br></font></div></a>
+                <div class="containerview" id="containerview9">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                 <ul class="list inset listkasten" id="settingsList9">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name9" value="" onchange="savedata('name9');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link9" value="" onchange="savedata('link9');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation9" value="p" onchange="savedata('orientation9');">
+                            <option id="orientation9a" value="a">Auto</option>
+                            <option id="orientation9p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation9l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom9" value="On" onchange="savedata('doubletapzoom9');">
+                            <option id="doubletapzoom9on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom9off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+                    
+                     <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar9" value="On" onchange="savedata('toolbar9');">
+                            <option id="toolbar9bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar9top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar9off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom9" min="10" max="300" value="100" onchange="savedata('zoom9');"><br>
+                         <output id="zoom9o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                 <br></div><br>
+                     <font color="#00b600" size="+1"><div class="viewbutton" id="viewbutton10"><br><a onclick="displayviewcontainer(10);"><center><b><div id="viewnamecontainer10"><script>document.write(h14);</script> 10</div></b></center><br></font></div></a>
+                <div class="containerview" id="containerview10">
+                <br><script>document.write(h115);</script><br>
+                <script>document.write(h116);</script>
+                <ul class="list inset listkasten" id="settingsList10">
+                    <li>
+                        <label>Name</label>
+                        <input  type="text" id="name10" value="" onchange="savedata('name10');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>Link</label>
+                        <input  type="text" id="link10" value="" onchange="savedata('link10');">
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    <li style="display:none">
+                        <label><script>document.write(h33);</script></label>
+                        <select id="orientation10" value="p" onchange="savedata('orientation10');">
+                            <option id="orientation10a" value="a">Auto</option>
+                            <option id="orientation10p" value="p"><script>document.write(h34);</script></option>
+                            <option id="orientation10l" value="l"><script>document.write(h35);</script></option>
+                        </select>
+                        
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                    
+                   <li>
+                        <label><script>document.write(h38);</script></label>
+                        <select id="doubletapzoom10" value="On" onchange="savedata('doubletapzoom10');">
+                            <option id="doubletapzoom10on" value="On"><script>document.write(h36);</script></option>
+                            <option id="doubletapzoom10off" value="Off"><script>document.write(h37);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li> 
+                    
+                    <li>
+                        <label><script>document.write(h41);</script></label>
+                        <select id="toolbar10" value="On" onchange="savedata('toolbar10');">
+                            <option id="toolbar10bottom" value="Bottom"><script>document.write(h42);</script></option>
+                            <option id="toolbar10top" value="Top"><script>document.write(h43);</script></option>
+                            <option id="toolbar10off" value="Off"><script>document.write(h44);</script></option>
+                        </select>
+                        <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+
+                    <li style="display:none">
+                        <label>Zoom</label>
+                         <input type="range" id="zoom10" min="10" max="300" value="100" onchange="savedata('zoom10');"><br>
+                         <output id="zoom10o"></output> % 
+                         <label style="left:70%" data-on="On" data-off="Off"><span></span>
+                        </label>
+                    </li>
+                 </ul>
+               <br>
+                </div>				
+				
+				
+				
+                            <br>
+                <div class="menukasten" style="border-radius: 8px;"><br>                 
+                <font color="#00b600" size="+1"><p><center><b><script>document.write(h119);</script></b></center><br></font>
+                <br><script>document.write(h30);</script><br>
+                <textarea id="config" name="config" rows="4" cols="50"></textarea>
+                <center>
+                    <button type="button" onclick="backupandrestore('backup');"><script>document.write(h120);</script></button><br><br>
+                    <button type="button" onclick="backupandrestore('backupandmail');"><script>document.write(h122);</script></button><br><br>
+                    <button type="button" onclick="backupandrestore('restore');"><script>document.write(h121);</script></button><br>
+
+                </center>
+                <br>
+                </div>                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            </div>
+        
+        
+                                                    
+            
+            
+            
+            
+            
+        </div>
+    </div>
+
+    </div>
+
+    
+</body>
+</html>

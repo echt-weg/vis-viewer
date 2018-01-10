@@ -1,0 +1,76 @@
+header { 
+    background:#1a1a1a !important;
+}
+
+button { 
+    background:#8c8c8c !important;
+    background-color:#8c8c8c !important;
+    color:black !important;
+    width:40%;
+    height:30px;
+}
+
+
+
+div.backgroundcolor {
+    background-color:black!important;
+}
+
+
+
+font { 
+    color: #e6e6e6 !important;
+}
+
+
+div.menukasten { 
+    background-color:#666666 !important;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #e6e6e6 !important;
+
+}
+
+
+div.viewbutton { 
+    background-color:#666666;
+    border-radius: 8px;
+
+}
+
+
+div.viewbuttonon { 
+    background-color:#666666;
+    border-radius: 8px;
+}
+
+
+div.containerview { 
+    display:none !important;
+    background-color:#1a1a1a;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+div.containerviewon { 
+    display:block !important;
+    background-color:#1a1a1a;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #e6e6e6 !important;
+
+}
+
+
+ul.listkasten { 
+    color: black !important;
+}
+
+
+
+
+

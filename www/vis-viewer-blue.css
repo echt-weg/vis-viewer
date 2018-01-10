@@ -1,0 +1,68 @@
+header { 
+    background:#3399cc !important;
+}
+
+button { 
+    background:#3399cc !important;
+    background-color:#3399cc !important;
+    color:#f9f9f9 !important;
+    width:40%;
+    height:30px;
+}
+
+
+
+font { 
+    color: #3399cc !important;
+}
+
+
+div.menukasten { 
+    background-color:#f9f9f9 !important;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #1f5c7a !important;
+
+}
+
+
+div.viewbutton { 
+    background-color:#f9f9f9;
+    border-radius: 8px;
+
+}
+
+
+div.viewbuttonon { 
+    background-color:#f9f9f9;
+    border-radius: 8px;
+}
+
+
+div.containerview { 
+    display:none !important;
+    background-color:#EEEEEE;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+div.containerviewon { 
+    display:block !important;
+    background-color:#f9f9f9;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #1f5c7a !important;
+
+}
+
+
+
+ul.listkasten { 
+    color: #1f5c7a !important;
+}
+
+
